@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+
 import "./globals.css";
 import {
   ClerkProvider,
@@ -8,6 +9,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
+import Nav from "@/components/Nav";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,15 +28,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    
     <ClerkProvider>
+
       <html lang="en">
-        <body>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/posts">Posts</Link>
-            <Link href="/user">User</Link>
-          </nav>
-          <h1>Social Media</h1>
+        <body className="flex flex-col">
+        <Nav />
           <SignedOut>
             <SignInButton />
           </SignedOut>
