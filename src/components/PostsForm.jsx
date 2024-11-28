@@ -1,3 +1,4 @@
+
 import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -23,4 +24,8 @@ export default async function PostsForm() {
       <button>Submit</button>
     </form>
   );
+
+
+
+  
 }

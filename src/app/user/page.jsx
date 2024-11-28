@@ -1,7 +1,15 @@
-export default function UserPage() {
+import { currentUser } from '@clerk/nextjs/server';
+
+export default async function UserPage() {
+    const user = await currentUser();
+    
+    console.log("current user:", user)
     return (<>
     
-    <h2>User</h2>
-    <p>This page will use the ID from the currently signed in clerk user to get the information</p>
+    <h2>{user?.firstName} {user?.lastName}</h2>
+    
+  
+
+ <div>Username: {user?.username}</div>
     </>)
 }

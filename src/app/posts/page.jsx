@@ -4,6 +4,7 @@ import { db } from "@/utils/db";
 import { SignedOut, SignedIn } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function PostsPage() {
   const { userId } = await auth();
@@ -27,6 +28,11 @@ export default async function PostsPage() {
   );
   const numUsers = responseUser.rowCount;
   console.log(responseUser.rowCount);
+
+  //redirected to notFound page
+if(!posts) {
+    notFound()
+}
 
   return (
     <div>
