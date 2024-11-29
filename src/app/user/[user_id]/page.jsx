@@ -33,7 +33,7 @@ export default async function UserPage() {
 
       <div>Username: {user?.username}</div>
       <div>Email: {user?.emailAddresses[0].emailAddress}</div>
-      <div>Bio: {responseUser.rows[0].bio}</div>
+      <div>Bio: {responseUser?.rows[0].bio}</div>
     </>
   );
 }

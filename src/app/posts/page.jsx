@@ -36,7 +36,7 @@ if(!posts) {
 
   return (
     <div>
-      <h2>Posts page</h2>
+      <h2>Posts</h2>
       <SignedIn>{numUsers === 1 ? <PostsForm /> : <UserForm />}</SignedIn>
 
       <SignedOut>
