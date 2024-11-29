@@ -1,7 +1,9 @@
 
 import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
+import { Form } from "@radix-ui/react-form";
 import { revalidatePath } from "next/cache";
+import NewForm from "./NewForm";
 
 export default async function PostsForm() {
   const { userId } = await auth();
@@ -19,12 +21,18 @@ export default async function PostsForm() {
   
 
   return (
+    <>
     <form action={handleSubmit}>
       <textarea name="content" placeholder="Write your post here..."></textarea>
       <button>Submit</button>
-    </form>
+    </form>,
+
+<NewForm />
+</>
   );
 
+
+  
 
 
   

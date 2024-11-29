@@ -11,5 +11,6 @@ export default async function UserPage() {
   
 
  <div>Username: {user?.username}</div>
+
     </>)
 }
