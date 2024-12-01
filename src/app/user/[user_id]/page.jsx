@@ -39,26 +39,42 @@ export default async function UserPage() {
 
   return (
     <>
-      <h2>
-        Logged in: {user?.firstName} {user?.lastName}
-      </h2>
+     <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6">
+  {/* User Information */}
+  <div className="mb-6">
+    <h2 className="text-lg font-semibold text-gray-800 mb-2">
+      Logged in: {user?.firstName} {user?.lastName}
+    </h2>
+    <div className="text-sm text-gray-700 mb-1">
+      <span className="font-medium">Username:</span> {currentUserData?.username}
+    </div>
+    <div className="text-sm text-gray-700 mb-1">
+      <span className="font-medium">Email:</span> {user?.emailAddresses[0].emailAddress}
+    </div>
+    <div className="text-sm text-gray-700">
+      <span className="font-medium">Bio:</span> {currentUserData?.bio || "No bio available."}
+    </div>
+  </div>
 
-      <div>Username: {currentUserData?.username}</div>
-      <div>Email: {user?.emailAddresses[0].emailAddress}</div>
-      <div>Bio: {currentUserData?.bio}</div>
-
-      <h3>Your Posts</h3>
-      <ul>
-        {userPosts.length > 0 ? (
-          userPosts.map((post) => (
-            <li key={post.id}>
-              <strong>{post.username}</strong>: {post.content}
-            </li>
-          ))
-        ) : (
-          <div>No posts found.</div>
-        )}
+  {/* User Posts */}
+  <div>
+    <h3 className="text-md font-semibold text-gray-800 mb-3">Your Posts</h3>
+    {userPosts.length > 0 ? (
+      <ul className="space-y-4">
+        {userPosts.map((post) => (
+          <li 
+            key={post.id} 
+            className="bg-gray-100 p-4 rounded-md shadow-sm border border-gray-200"
+          >
+            <strong className="text-blue-600">{post.username}</strong>: {post.content}
+          </li>
+        ))}
       </ul>
+    ) : (
+      <div className="text-gray-500">No posts found.</div>
+    )}
+  </div>
+</div>
     </>
   );
 }

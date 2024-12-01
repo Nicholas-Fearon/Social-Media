@@ -43,14 +43,41 @@ if(!posts) {
         <Link href="/sign-in">Please sign in to make a post</Link>
       </SignedOut>
 
-      {posts.map((post) => {
-        return (
-          <div key={post.id}>
-            <h3><Link href={`/user/${post.user_id}`}>{post.username}</Link> says</h3>
-            <p>{post.content}</p>
-          </div>
-        );
-      })}
+      <div className="max-w-3xl mx-auto py-6">
+  {posts.map((post) => (
+    <div 
+      key={post.id} 
+      className="bg-white shadow-md rounded-lg p-4 mb-6 border border-gray-200"
+    >
+      {/* Header: User Name */}
+      <h3 className="font-semibold text-lg mb-3">
+        <Link href={`/user/${post.user_id}`} className="hover:text-blue-500">
+          {post.username}
+        </Link> 
+        <span className="text-sm text-gray-500"> says</span>
+      </h3>
+
+      {/* Post Content */}
+      <p className="text-gray-800 text-base mb-4">{post.content}</p>
+
+      {/* Like Section */}
+      <div className="flex justify-end text-sm text-gray-500">
+        <button className="flex items-center hover:text-blue-500">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-5 w-5 mr-1" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          </svg>
+          Like
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
     </div>
   );
 }

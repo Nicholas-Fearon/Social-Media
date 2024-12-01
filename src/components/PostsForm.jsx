@@ -22,36 +22,41 @@ export default async function PostsForm() {
   return (
     <>
      
-      <div className="bg-blue-500 w-auto px-5 py-5">
-        <Form.Root action={handleSubmit} className="w-[260px]">
-          <Form.Field className="mb-2.5 grid" name="content">
-            <div className="flex items-baseline justify-between">
-              <Form.Label className="text-[15px] font-medium leading-[35px] text-white">
-                Write your post below
-              </Form.Label>
-              <Form.Message
-                className="text-[13px] text-black opacity-80"
-                match="valueMissing"
-              >
-                Write your post here...
-              </Form.Message>
-            </div>
-            <Form.Control asChild>
-              <textarea
-                className="box-border inline-flex h-[60px] w-full p-1 appearance-none items-center justify-center rounded bg-blackA2 px-2.5 text-[15px] leading-none text-black shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-black hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
-                type="textarea"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
+     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+  <h2 className="text-lg font-semibold text-gray-800 mb-4">Create a Post</h2>
+  <Form.Root 
+    action={handleSubmit} 
+    className="space-y-4"
+  >
+    {/* Field for Content */}
+    <Form.Field className="grid" name="content">
+      <Form.Label className="text-sm font-medium text-gray-700 mb-2">
+        Write your post below
+      </Form.Label>
+      <Form.Control asChild>
+        <textarea
+          className="resize-none h-24 w-full rounded-md border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
+          type="textarea"
+          placeholder="Write your post here..."
+          required
+        />
+      </Form.Control>
+      <Form.Message
+        className="text-xs text-red-500 mt-1"
+        match="valueMissing"
+      >
+        This field is required.
+      </Form.Message>
+    </Form.Field>
 
-          <Form.Submit asChild>
-            <button className="mt-2.5 box-border inline-flex h-[35px] w-full items-center justify-center rounded bg-white px-[15px] font-medium leading-none text-violet11 shadow-[0_2px_10px] shadow-blackA4 hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
-              Submit Post
-            </button>
-          </Form.Submit>
-        </Form.Root>
-      </div>
+    {/* Submit Button */}
+    <Form.Submit asChild>
+      <button className="w-full bg-blue-500 text-white text-sm font-medium py-2 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+        Submit Post
+      </button>
+    </Form.Submit>
+  </Form.Root>
+</div>
       
     </>
   );
